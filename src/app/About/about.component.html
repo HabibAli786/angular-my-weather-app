@@ -1,3 +1,16 @@
 <div class="about">
-    <h1>{{ title }}</h1>
+    <h1 class="mt-5">{{ title }}</h1>
+
+    <label for="offices">Choose from one of our office</label>
+    <select class="ml-2" name="offices" id="offices" aria-placeholder="Please select a city" [(ngModel)]="selectedOption" (ngModelChange)="changeSelect($event)">
+        <option *ngFor="let office of offices" [ngValue]="office">{{ office.name }}</option>
+    </select>
+
+    <div class="office-content" *ngIf="selectedOption">
+        <p>Office Name: {{ selectedOption.name }}</p>
+        <p>Description: {{ selectedOption.desc }}</p>
+        <p>Street Name: {{ selectedOption.street }}</p>
+        <p *ngIf="selectedOption.height">Height: {{ selectedOption.height }}</p>
+        <p>Parking Access: {{ selectedOption.parkingAccess === true ? "Available" : "Not Available" }}</p>
+    </div>
 </div>

@@ -1,5 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home.component';
 
 @NgModule({
@@ -7,8 +7,8 @@ import { HomeComponent } from './home.component';
     HomeComponent
   ],
   imports: [
-    BrowserModule,
     // AppRoutingModule
+    SharedModule
   ],
   exports: [
       HomeComponent
