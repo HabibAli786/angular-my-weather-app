@@ -8,6 +8,7 @@ import { AboutModule } from './About/about.module';
 import { HomeComponent } from './Home/home.component';
 import { HomeModule } from './Home/home.module';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     WeatherModule,
     AboutModule,
     HomeModule

@@ -1,8 +1,10 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
 import { WeatherComponent } from './weather.component';
+import { WeatherService } from './weather.service';
 
 @NgModule({
   declarations: [
@@ -10,12 +12,13 @@ import { WeatherComponent } from './weather.component';
   ],
   imports: [
     BrowserModule,
-    // AppRoutingModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     WeatherComponent
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [WeatherComponent]
 })
 export class WeatherModule { }
