@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable, throwError } from "rxjs";
 
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class WeatherService {
     // API Key f6db6883d8684c6c931100901213103
