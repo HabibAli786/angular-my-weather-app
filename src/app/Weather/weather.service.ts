@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { Observable, throwError } from "rxjs";
+import { BehaviorSubject, Observable, throwError } from "rxjs";
 
 
 @Injectable({
@@ -11,21 +11,18 @@ export class WeatherService {
     // API Key f6db6883d8684c6c931100901213103
 
     apiKey = 'f6db6883d8684c6c931100901213103'
-    city = 'London'
-    
-  
-    weather$ = this.http.get(`http://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${this.city}&aqi=no`)
-    .pipe(
-        tap(data => console.log('Data returned: ', data)),
-        catchError(this.handleError)
-    );
 
     constructor(private http: HttpClient) {
 
     }
 
-    getCityWeather(city: string) {
+    setCityWeather(city: string) {
       console.log(city)
+      return this.http.get(`http://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${city}&aqi=no`)
+      .pipe(
+          tap(data => console.log('Data returned: ', data)),
+          catchError(this.handleError)
+      );
     }
 
     private handleError(err: HttpErrorResponse): Observable<never> {
@@ -41,6 +38,6 @@ export class WeatherService {
           errorMessage = `Backend returned code ${err.status}: ${err.message}`;
         }
         console.error(err);
-        return throwError(() => errorMessage);
+        return throwError(errorMessage);
       }
 }
