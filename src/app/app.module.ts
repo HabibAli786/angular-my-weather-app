@@ -9,6 +9,7 @@ import { HomeComponent } from './Home/home.component';
 import { HomeModule } from './Home/home.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { MyFavouritesModule } from './MyFavourites/my-favourites.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     WeatherModule,
     AboutModule,
-    HomeModule
+    HomeModule,
+    MyFavouritesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
