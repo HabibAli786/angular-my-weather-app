@@ -20,6 +20,15 @@
         </li>
       </ul>
     </div>
+    <!-- {{ message$ | async }}
+    <button (click)="goAction()">Go</button>
+    <button (click)="stopAction()">Stop</button> -->
+    <div *ngIf="post$ | async as p">
+      <h3>{{ p.text }}</h3>
+      <input [(ngModel)]="text">
+      <button (click)="editText()">Change text</button>
+    </div>
+
   </div>
 </nav>
 
