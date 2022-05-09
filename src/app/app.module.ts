@@ -15,6 +15,7 @@ import { AboutModule } from './About/about.module';
 import { HomeComponent } from './Home/home.component';
 import { HomeModule } from './Home/home.module';
 import { MyFavouritesModule } from './MyFavourites/my-favourites.module';
+import { FavouriteReducer } from './redux/reducers/favourites.reducer';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { MyFavouritesModule } from './MyFavourites/my-favourites.module';
     MyFavouritesModule,
     StoreModule.forRoot({ 
       message: SimpleReducer,
-      post: PostReducer 
+      post: PostReducer
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

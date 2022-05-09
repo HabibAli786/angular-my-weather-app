@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 
 import { WeatherComponent } from './weather.component';
 import { WeatherService } from './weather.service';
+import { StoreModule } from '@ngrx/store';
+import { FavouriteReducer } from '../redux/reducers/favourites.reducer';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,8 @@ import { WeatherService } from './weather.service';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forFeature('favourites' , FavouriteReducer),
   ],
   exports: [
     WeatherComponent
