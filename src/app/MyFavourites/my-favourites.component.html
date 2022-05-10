@@ -1,1 +1,19 @@
-<h1>I am working</h1>
+<div class="title">
+    <h1 class="mt-5">{{ title }}</h1>
+</div>
+
+<div *ngFor="let favourite of myFavourites">
+    <h5>{{ favourite }}</h5>
+    <button (click)="getWeather(favourite)">Get Weather</button>
+
+    <div *ngIf="weather$ as weather">
+        <p>City: {{ weather.location.name }}</p>
+        <p>Region: {{ weather.location.region }}</p>
+        <p>Country {{ weather.location.country }}</p>
+        <p>Temperture: {{ weather.current.temp_c }}°C</p>
+        <p>Feels Like: {{ weather.current.feelslike_c }}°C</p>
+        <p>Condition: {{ weather.current.condition.text }}</p>
+        <p>Humidity: {{ weather.current.humidity }}</p>
+        <p>Wind (mph): {{ weather.current.wind_mph }}</p>
+    </div>
+</div>

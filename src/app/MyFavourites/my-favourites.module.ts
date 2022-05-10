@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 
 import { MyFavourites } from './my-favourites.component';
+import { FavouriteReducer } from '../redux/reducers/favourites.reducer';
+import { StoreModule } from '@ngrx/store';
+import { WeatherService } from '../Weather/weather.service';
 
 @NgModule({
   declarations: [
@@ -10,11 +13,12 @@ import { MyFavourites } from './my-favourites.component';
   ],
   imports: [
     BrowserModule,
+    StoreModule.forFeature('favourites' , FavouriteReducer),
   ],
   exports: [
     MyFavourites
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [MyFavourites]
 })
 export class MyFavouritesModule { }

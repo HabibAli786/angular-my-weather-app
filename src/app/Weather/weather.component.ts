@@ -73,6 +73,7 @@ export class WeatherComponent implements OnInit {
         return EMPTY
       })
     ).subscribe(data => {
+      console.log(data)
       this.weather.next(data)
       this.errorMessage = null
     })    
