@@ -4,8 +4,8 @@
 
 <div *ngFor="let favourite of myFavourites">
     <h5>{{ favourite.cityName }}</h5>
-    <button (click)="getWeather(favourite.cityName)">Get Weather</button>
-    <button class="ml-2" (click)="toggleDisplay(favourite.cityName)">Hide</button>
+    <button class="btn btn-primary" (click)="getWeather(favourite.cityName)">Get Weather</button>
+    <button class="btn btn-danger ml-2" (click)="toggleDisplay(favourite.cityName)">Hide</button>
 
     <div *ngIf="favourite.data && favourite.displayText">
         <p>City: {{ favourite.data.location.name }}</p>

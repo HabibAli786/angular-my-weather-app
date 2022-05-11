@@ -19,7 +19,7 @@
         <p>Condition: {{ weather.current.condition.text }}</p>
         <p>Humidity: {{ weather.current.humidity }}</p>
         <p>Wind (mph): {{ weather.current.wind_mph }}</p>
-        <button (click)="addToFav(weather.location.name)" [disabled]="isDisable">Add to Favourites</button>
+        <button class="btn btn-primary" (click)="addToFav(weather.location.name)" [disabled]="isDisable">Add to Favourites</button>
     </div>
 
     <div *ngIf="errorMessage">
