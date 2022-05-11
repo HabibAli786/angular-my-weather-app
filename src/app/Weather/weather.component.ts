@@ -46,12 +46,10 @@ export class WeatherComponent implements OnInit {
 
   checkFavourites(selectedCity) {
     console.log(selectedCity)
-    this.favourites$.subscribe(data => {
-      
+    this.favourites$.subscribe((data: any) => {
       for(let i=0; i < data.cities.length; i++) {
-        console.log(data.cities[i])
-        if(selectedCity.toLowerCase() === data.cities[i]) {
-          console.log("This city was selected" + data.cities[i])
+        if(selectedCity.toLowerCase() === data.cities[i].cityName) {
+          console.log("This city was selected" + data.cities[i].cityName)
           this.isDisable = true
           break
         } else {
@@ -84,7 +82,12 @@ export class WeatherComponent implements OnInit {
   }
 
   addToFav(city: string) {
-    console.log(city)
-    this.store.dispatch(new FavourtesAction.AddFavourite(city.toLowerCase()))
+    const data = this.weather.getValue()
+    const cityObject = {
+      cityName: city.toLowerCase(),
+      displayText: false
+    }
+
+    this.store.dispatch(new FavourtesAction.AddFavourite(cityObject))
   }
 }

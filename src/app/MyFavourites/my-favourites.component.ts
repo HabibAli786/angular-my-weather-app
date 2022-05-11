@@ -6,6 +6,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Favourite } from '../redux/models/favourites.model';
 import { Weather } from '../Weather/weather';
 import { WeatherService } from '../Weather/weather.service';
+import * as FavourtesAction from '../redux/actions/favourites.action'
 
 interface AppState {
   favourites: Favourite
@@ -22,6 +23,7 @@ export class MyFavourites implements OnInit {
   myFavourites: {}
 
   weather$ : Observable<Weather>
+  weather: any
 
   errorMessage: string
 
@@ -34,6 +36,7 @@ export class MyFavourites implements OnInit {
   }
 
   getWeather(city) {
+    console.log(city)
     this.weatherService.setCityWeather(city)
     .pipe(
       // tap((data) => console.log(data)),
@@ -42,9 +45,13 @@ export class MyFavourites implements OnInit {
         return EMPTY
       })
     ).subscribe(data => {
-      // this.selectedWeather
-      console.log(data)      
+      this.store.dispatch(new FavourtesAction.EditFavourite(data))
+      this.store.dispatch(new FavourtesAction.HideFavourite({ city: city, display: true }))
     })    
+  }
+
+  toggleDisplay(cityName) {
+    this.store.dispatch(new FavourtesAction.HideFavourite({ city: cityName, display: false }))
   }
 
 }

@@ -3,17 +3,19 @@
 </div>
 
 <div *ngFor="let favourite of myFavourites">
-    <h5>{{ favourite }}</h5>
-    <button (click)="getWeather(favourite)">Get Weather</button>
+    <h5>{{ favourite.cityName }}</h5>
+    <button (click)="getWeather(favourite.cityName)">Get Weather</button>
+    <button class="ml-2" (click)="toggleDisplay(favourite.cityName)">Hide</button>
 
-    <div *ngIf="weather$ as weather">
-        <p>City: {{ weather.location.name }}</p>
-        <p>Region: {{ weather.location.region }}</p>
-        <p>Country {{ weather.location.country }}</p>
-        <p>Temperture: {{ weather.current.temp_c }}°C</p>
-        <p>Feels Like: {{ weather.current.feelslike_c }}°C</p>
-        <p>Condition: {{ weather.current.condition.text }}</p>
-        <p>Humidity: {{ weather.current.humidity }}</p>
-        <p>Wind (mph): {{ weather.current.wind_mph }}</p>
+    <div *ngIf="favourite.data && favourite.displayText">
+        <p>City: {{ favourite.data.location.name }}</p>
+        <p>Region: {{ favourite.data.location.region }}</p>
+        <p>Country {{ favourite.data.location.country }}</p>
+        <p>Temperture: {{ favourite.data.current.temp_c }}°C</p>
+        <p>Feels Like: {{ favourite.data.current.feelslike_c }}°C</p>
+        <p>Condition: {{ favourite.data.current.condition.text }}</p>
+        <p>Humidity: {{ favourite.data.current.humidity }}</p>
+        <p>Wind (mph): {{ favourite.data.current.wind_mph }}</p>
+        <!-- <p>I am working</p> -->
     </div>
 </div>

@@ -1,10 +1,10 @@
 <div class="weather mt-5">
     <h1>{{ title }}</h1>
 
-    <form class="mb-5" [formGroup]="cityForm" (ngSubmit)="handleSumbit()">
+    <form class="mb-5" [formGroup]="cityForm" (ngSubmit)="handleSumbit()" ngNativeValidate>
         <div>
             <label for="cityName" class="form-label">Enter a City</label>
-            <input type="email" class="form-control city-input" formControlName="cityName" placeholder="London...">
+            <input type="text" class="form-control city-input" formControlName="cityName" placeholder="London..." required>
         </div>
 
         <button class="btn btn-primary mt-2">Submit</button>
